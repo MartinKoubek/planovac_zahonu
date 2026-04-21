@@ -3,10 +3,20 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 VEGETABLES = {
+    "bazalka": {
+        "label": "Bazalka",
+        "compatible": ["rajce", "paprika", "salat"],
+        "incompatible": ["ruta"],
+    },
     "rajce": {
         "label": "Rajče",
         "compatible": ["bazalka", "cibule", "cesnek", "mrkev", "salat"],
         "incompatible": ["brambory", "fenykl", "kukurice"],
+    },
+    "paprika": {
+        "label": "Paprika",
+        "compatible": ["bazalka", "cibule", "cesnek", "mrkev", "salat"],
+        "incompatible": ["fenykl", "brambory"],
     },
     "mrkev": {
         "label": "Mrkev",
@@ -18,20 +28,50 @@ VEGETABLES = {
         "compatible": ["mrkev", "cervena_repa", "salat", "rajce", "jahody"],
         "incompatible": ["fazole", "hrasek"],
     },
+    "kopr": {
+        "label": "Kopr",
+        "compatible": ["okurka", "zeli", "rajce"],
+        "incompatible": ["mrkev"],
+    },
     "cesnek": {
         "label": "Česnek",
         "compatible": ["mrkev", "okurka", "rajce", "jahody", "cervena_repa"],
         "incompatible": ["fazole", "hrasek", "zeli"],
+    },
+    "porek": {
+        "label": "Pórek",
+        "compatible": ["mrkev", "celer", "jahody", "salat"],
+        "incompatible": ["fazole", "hrasek"],
     },
     "salat": {
         "label": "Salát",
         "compatible": ["mrkev", "okurka", "redkvicka", "rajce", "jahody"],
         "incompatible": ["petrzel"],
     },
+    "hlavkovy_salat": {
+        "label": "Hlávkový salát",
+        "compatible": ["mrkev", "okurka", "redkvicka", "rajce", "jahody"],
+        "incompatible": ["petrzel"],
+    },
+    "spenat": {
+        "label": "Špenát",
+        "compatible": ["mrkev", "redkvicka", "zeli", "jahody"],
+        "incompatible": [],
+    },
     "okurka": {
         "label": "Okurka",
         "compatible": ["fazole", "hrasek", "kopr", "salat", "cesnek"],
         "incompatible": ["brambory", "rajce", "redkvicka"],
+    },
+    "cuketa": {
+        "label": "Cuketa",
+        "compatible": ["fazole", "cibule", "kukurice"],
+        "incompatible": ["brambory"],
+    },
+    "dyne": {
+        "label": "Dýně",
+        "compatible": ["fazole", "kukurice", "redkvicka"],
+        "incompatible": ["brambory"],
     },
     "fazole": {
         "label": "Fazole",
@@ -48,10 +88,45 @@ VEGETABLES = {
         "compatible": ["celer", "fazole", "kopr", "cibule"],
         "incompatible": ["cesnek", "rajce", "jahody"],
     },
+    "kedluben": {
+        "label": "Kedluben",
+        "compatible": ["celer", "spenat", "redkvicka", "cibule"],
+        "incompatible": ["rajce"],
+    },
     "brambory": {
         "label": "Brambory",
         "compatible": ["fazole", "kren", "kukurice", "zeli"],
         "incompatible": ["okurka", "rajce", "dyne"],
+    },
+    "redkvicka": {
+        "label": "Ředkvička",
+        "compatible": ["mrkev", "okurka", "salat", "hrasek"],
+        "incompatible": ["yzop"],
+    },
+    "petrzel": {
+        "label": "Petržel",
+        "compatible": ["rajce", "porek", "redkvicka"],
+        "incompatible": ["salat"],
+    },
+    "celer": {
+        "label": "Celer",
+        "compatible": ["zeli", "porek", "fazole", "kedluben"],
+        "incompatible": ["kukurice"],
+    },
+    "cervena_repa": {
+        "label": "Červená řepa",
+        "compatible": ["cibule", "cesnek", "salat", "okurka"],
+        "incompatible": ["popinavy_fazole"],
+    },
+    "jahody": {
+        "label": "Jahody",
+        "compatible": ["cesnek", "cibule", "porek"],
+        "incompatible": ["zeli"],
+    },
+    "kukurice": {
+        "label": "Kukuřice",
+        "compatible": ["fazole", "hrasek", "cuketa", "dyne"],
+        "incompatible": ["rajce", "celer"],
     },
 }
 

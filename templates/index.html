@@ -134,7 +134,7 @@
 
         <form method="post">
           <label for="vegetable">Zelenina</label>
-          <select id="vegetable" name="vegetable">
+          <select id="vegetable" name="vegetable" onchange="this.form.submit()">
             <option value="">Vyber zeleninu</option>
             {% for vegetable in vegetables %}
               <option value="{{ vegetable.key }}" {% if vegetable.key == selected_key %}selected{% endif %}>
@@ -142,7 +142,6 @@
               </option>
             {% endfor %}
           </select>
-          <button type="submit">Zobrazit kombinace</button>
         </form>
 
         {% if result %}
