@@ -2,6 +2,8 @@
 
 Jednoduchá webová aplikace ve Flasku. Uživatel si vybere zeleninu a zobrazí se, která zelenina je na záhonu snášenlivá a která není.
 
+Pro nasazení na Render používá aplikace produkční server `gunicorn` a verzi Pythonu 3.11 v souboru `.python-version`.
+
 ## Spuštění
 
 1. Použij Python 3.11.
